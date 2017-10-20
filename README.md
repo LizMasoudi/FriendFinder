@@ -1,23 +1,45 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Friend Finder}
-TODO: Write a project description
-## Installation
-TODO: Describe the installation process
-## Usage
-TODO: Write usage instructions
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-## History
-TODO: Write history
-## Credits
-TODO: Write credits
-## License
-TODO: Write license
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
+- -------------------Friend Finder------------------- -
+
+This application offers users the ability to answer a short, twn question survey, and then match their results to those of another survey-taker whose results are closest to theirs. The idea behind the application is that individuals can complete the survey and get matched with someone with whom they will be compatible so that they can become friends :) 
+
+#Getting Started
+
+
+
+#Prerequisites
+
+Node.js is required to run this application, as well as the npm packages express, body-parser, and path
+
+#Installing
+
+1. Install Node.js on your local machine (macOS instructions: https://changelog.com/posts/install-node-js-with-homebrew-on-os-x)
+
+2. Clone the Git respository to your local machine
+
+3. Navigate to the Git repository on your local machine in terminal, and: 
+npm install --save express
+npm install --save body-parser
+npm install --save path
+
+
+#Built With
+
+JavaScript
+Express.JS
+
+#Versioning
+
+This is version 1.0 of the Friend Finder application. 
+
+#Authors
+
+Liz Masoudi
+grrliz86@hotmail.com
+
+#License
+
+This project is licensed under the ICS License. 
+
+#Acknowledgments
+
+Ron Salmon ... for being a wonderful teacher
