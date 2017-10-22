@@ -4,28 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Friend Finder: Survey</title>
-    <!-- Link to the jQuery Library -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-    <!-- Including Font Awesome Icons -->
-    <script src="https://use.fontawesome.com/b38c8ed4c7.js"></script>
-
-    <!-- Link to reset stylesheet -->
     <link rel="stylesheet" href="css/reset.css">
-
-    <!-- Link to Boostrap  -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-        crossorigin="anonymous">
-
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Compiled and minified Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-
-    <!-- Compiled and minified Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -35,6 +17,10 @@
         <div class="row">
             <h1>Friend Finder Survey</h1>
             <hr>
+            <a href="/">
+                <button type="button" class="btn btn-info btn-md center-block" id="home">
+                    <span class="glyphicon glyphicon-home"></span> Head Back Home</button>
+            </a>
         </div>
         <div class="row">
             <h4>First, provide your name and a link to an image of you</h4>
@@ -156,60 +142,80 @@
             <br>
             <button type="submit" class="btn btn-info btn-md" id="confirm">SUBMIT</button>
         </div>
+
         <!-- Modal Dialog Displaying Closest Friend Match -->
-        <div id="myModal" class="modal">
+        <div id="friendModal" class="modal">
             <div class="modal-content">
                 <h4>Closest Friend Match</h4>
                 <div class="divider"></div>
-                <h5 id="userMatch"></h5>
-                <img id="userMatchImage" class="materialboxed" width="650" src="">
+                <h5 id="matchName"></h5>
+                <img id="matchImg" class="materialboxed" width="650" src="">
             </div>
             <div class="modal-footer">
-                <a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">Fill Again!</a>
+                <a href="/survey" class="modal-action modal-close btn-info">Fill Again!</a>
             </div>
         </div>
     </div>
+
+    <div class="modal fade">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Closest Friend Match</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                        <h5 id="matchName"></h5>
+                        <img id="matchImg" class="materialboxed" width="650" src="">
+                </div>
+                <div class="modal-footer">
+                        <a href="/survey">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('select').material_select();
-            $('.modal').modal({
-                dismissible: false, // Modal can be dismissed by clicking outside of the modal
-                opacity: .5, // Opacity of modal background
-                inDuration: 300, // Transition in duration
-                outDuration: 200, // Transition out duration
-                startingTop: '4%', // Starting top style attribute
-                endingTop: '10%' // Ending top style attribute
-            });
-        });
         // Activate submit button
-        $('#submit').on('click', function (event) {
-            event.preventDefault();
-            // Gather user inputs
-            var userInput = {
-                name: $('#name').val().trim(),
-                photo: $('#profilePicture').val().trim(),
-                scores: [
-                    $('#q1').val().trim(),
-                    $('#q2').val().trim(),
-                    $('#q3').val().trim(),
-                    $('#q4').val().trim(),
-                    $('#q5').val().trim(),
-                    $('#q6').val().trim(),
-                    $('#q7').val().trim(),
-                    $('#q8').val().trim(),
-                    $('#q9').val().trim(),
-                    $('#q10').val().trim()
-                ]
-            };
-            // Add user inputs to friends list
-            $.post('/api/friends', userInput)
-                .done(function (data) {
-                    // Set the name and image values of friend match
-                    $('#userMatch').html(data.matchName);
-                    $("#userMatchImage").attr("src", data.matchImage);
-                    // Pop open the modal dialog
-                    $('#myModal').modal('open');
+        $("#confirm").on("click", function () {
+            // Form validation
+            function validateForm() {
+                var isValid = true;
+                $('.form-control').each(function () {
+                    if ($(this).val() === '')
+                        isValid = false;
                 });
+                $('.chosen-select').each(function () {
+                    if ($(this).val() === "")
+                        isValid = false
+                })
+                return isValid;
+            }
+            // If all required fields are filled
+            if (validateForm() == true) {
+                // Create an object for the user's data
+                var userData = {
+                    name: $("#name").val(),
+                    photo: $("#profilePicture").val(),
+                    scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),]
+                }
+                // Grab the URL of the website
+                var currentURL = window.location.origin;
+                // AJAX post the data to the friends API. 
+                $.post(currentURL + "/api/friends", userData, function (data) {
+                    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+                    $("#matchName").text(data.name);
+                    $('#matchImg').attr("src", data.photo);
+                    // Show the modal with the best match 
+                    $("#friendModal").modal('toggle');
+                });
+            } else {
+                alert("Please fill out all fields before submitting!");
+            }
+            return false;
         });
     </script>
 </body>
