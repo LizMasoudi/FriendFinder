@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 
 
-require(path.join(__dirname, './app/routing/apiRoutes.js'));
-require(path.join(__dirname, './app/routing/htmlRoutes.js'));
+require(path.join(__dirname, './app/routing/apiRoutes.js'))(app);
+require(path.join(__dirname, './app/routing/htmlRoutes.js'))(app);
 
 // app.get("/", function (req, res) {
 //     res.sendFile(path.join(__dirname, 'app/public/home.html'));
