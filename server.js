@@ -13,37 +13,22 @@ express.static("./app/public")
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var friends = [
-    {
-        name: "Liz", 
-        profilePicture: "https://google.com", 
-        q1: 1, 
-        q2: 2, 
-        q3: 1, 
-        q4: 1, 
-        q5: 5, 
-        q6: 5, 
-        q7: 4, 
-        q8: 2, 
-        q9: 3, 
-        q10: 4
-    }
-];
 
-// app.use("./app/routing/htmlRoutes.js");
-// app.use("./app/routing/apiRoutes.js");
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, 'app/public/home.html'));
-});
+require(path.join(__dirname, './app/routing/apiRoutes'))(app);
+require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
 
-app.get("/survey", function (req, res) {
-    res.sendFile(path.join(__dirname, 'app/public/survey.html'));
-});
+// app.get("/", function (req, res) {
+//     res.sendFile(path.join(__dirname, 'app/public/home.html'));
+// });
 
-app.get("/api/friends", function (req, res) {
-    res.json(friends)
-});
+// app.get("/survey", function (req, res) {
+//     res.sendFile(path.join(__dirname, 'app/public/survey.html'));
+// });
+
+// app.get("/api/friends", function (req, res) {
+//     res.json(friends)
+// });
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
