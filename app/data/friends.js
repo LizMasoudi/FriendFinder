@@ -12,4 +12,25 @@ function Friend(name, link, q1, q2, q3, q4, q5, qq, q7, q8, q9, q10) {
     this.q9answer = q9;
     this.q10answer = q10;
 }
-module.exports = Friend; 
+
+var friends = [
+    {
+        name: "Liz", 
+        profilePicture: "https://google.com", 
+        q1: 1, 
+        q2: 2, 
+        q3: 1, 
+        q4: 1, 
+        q5: 5, 
+        q6: 5, 
+        q7: 4, 
+        q8: 2, 
+        q9: 3, 
+        q10: 4
+    }
+];
+
+module.exports = {
+    friend: Friend,
+    friends: friends
+}; 
