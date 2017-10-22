@@ -13,7 +13,7 @@ express.static("./app/public")
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+var friends = [];
 
 // app.use("./app/routing/htmlRoutes.js");
 // app.use("./app/routing/apiRoutes.js");
