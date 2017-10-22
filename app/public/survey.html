@@ -6,13 +6,21 @@
     <title>Friend Finder: Survey</title>
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="./../data/friends.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
+    <script>
+        $('#submit').on("click", function(){
+            $('#welcomeModal').modal('toggle');
+        });
+    </script>
     <div class="container">
         <div class="row">
             <h1>Friend Finder Survey</h1>
@@ -37,96 +45,124 @@
                 the following statements</h4>
             <br>
             <label for="question1">1. I have a vivid imagination</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q1">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question2">2. I like to solve complex problems</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q2">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question3">3. I dislike being the center of attention</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q3">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question4">4. I try to follow the rules</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q4">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question5">5. I am always on the go</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q5">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question6">6. I believe that there is no absolute right and wrong</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q6">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question7">7. I feel sympathy for those who are worse off than myself</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q7">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question8">8. I am always prepared</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q8">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question9">9. I value cooperation over competition</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q9">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <label for="question10">10. I stick to my chosen path</label>
-            <select class="form-control">
-                <option>1 (strongly disagree)</option>
-                <option>2 (disagree) </option>
-                <option>3 (neither agree nor disagree)</option>
-                <option>4 (agree)</option>
-                <option>5 (strongly agree)</option>
+            <select class="form-control" id="q10">
+                <option value="0"></option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2 (disagree) </option>
+                <option value="3">3 (neither agree nor disagree)</option>
+                <option value="4">4 (agree)</option>
+                <option value="5">5 (strongly agree)</option>
             </select>
             <br>
             <button type="submit" class="btn btn-info btn-md" id="confirm">SUBMIT</button>
+        </div>
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">You've been matched with a friend!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your friend is...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
